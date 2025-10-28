@@ -67,3 +67,59 @@ body { background-color: #000; color: #fff; }  /* Ciemny vampirowy bg */
   color: #aaa;
   border-radius: 8px;
 }
+.obiektywy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.obiektyw {
+  background: #0b0b0c;
+  border: 1px solid #ff003c55;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 0 12px #ff003c33;
+  transition: all 0.3s ease;
+}
+
+.obiektyw:hover {
+  box-shadow: 0 0 24px #ff003c, 0 0 48px #ff003c55;
+  transform: scale(1.03);
+}
+
+.thumb.neon {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff003c;
+}
+
+h2 {
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.alias {
+  color: #ff003c;
+  text-shadow: 0 0 10px #ff003c;
+}
+
+.tags .tag {
+  display: inline-block;
+  background: #1a0005;
+  color: #ff5f5f;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  margin-right: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.thumb.neon {
+  box-shadow: 0 0 12px #ff003c;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.thumb.neon:hover {
+  box-shadow: 0 0 24px #ff003c, 0 0 48px #ff003c;
+  transform: scale(1.03);
+}

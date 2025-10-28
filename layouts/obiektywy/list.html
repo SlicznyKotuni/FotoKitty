@@ -1,35 +1,25 @@
 {{ define "main" }}
-<div class="ph3">
-  <div class="relative w-100 w-90-m w-50-l mw8 center">
-    <h1 class="f3 neon-red">{{ .Title }}</h1>
-    <div class="obiektywy-grid">
-      {{ range .Pages.ByTitle }}
-        <div class="obiektywy-card ba b--dark-gray pa3 pulse">
-          <h2 class="f4 neon-red">{{ .Title }}</h2>
-          <p class="f5 gray">
-            {{ if .Params.kluczowe_słowa }}
-              {{ delimit .Params.kluczowe_słowa ", " }}
-            {{ else }}
-              Brak słów kluczowych
-            {{ end }}
-          </p>  <!-- Dodany check na kluczowe_słowa -->
-          <p class="f6 white">Rodzina: {{ or .Params.rodzina "Brak rodziny" }}</p>  <!-- Dodany fallback dla rodziny -->
-          <p class="f6 white">Alias: {{ or .Params.alias "Brak aliasu" }}</p>  <!-- Dodany fallback dla aliasu -->
-          <div class="tags">
-            {{ range .Params.tags }}
-              <span class="tag-button neon-red">{{ . }}</span>
-            {{ end }}
-          </div>
-          {{ with .Resources.GetMatch "images/*" | first 1 }}
-            {{ $thumb := .Resize "300x webp" }}
-            <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}" class="w-100 pulse">
-          {{ else }}
-            <div class="placeholder">Brak zdjęcia</div>
-          {{ end }}
-          <a href="{{ .Permalink }}" class="db link dim white">Zobacz szczegóły</a>
-        </div>
+<section class="obiektywy-grid">
+  {{ range .Pages }}
+    <article class="obiektyw">
+      {{ $image := (.Resources.ByType "image").Get 0 }}
+      {{ if $image }}
+        {{ $thumb := $image.Fit "600x400" }}
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="thumb neon">
+      {{ else }}
+        <img src="/images/default-thumb.jpg" alt="Brak zdjęcia" class="thumb neon">
       {{ end }}
-    </div>
-  </div>
-</div>
+
+      <h2>{{ .Title }}</h2>
+      {{ with .Params.alias }}<p class="alias">{{ . }}</p>{{ end }}
+      {{ with .Params.tags }}
+        <p class="tags">
+          {{ range . }}
+            <span class="tag">{{ . }}</span>
+          {{ end }}
+        </p>
+      {{ end }}
+    </article>
+  {{ end }}
+</section>
 {{ end }}
