@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="ph3">
+  <div class="relative w-100 mw8 center">
+    <h1 class="f3 neon-red">Galeria Wszystkich Zdjęć</h1>
+    <div class="photos-grid">
+      {{ range where .Site.RegularPages "Section" "obiektywy" }}  <!-- Iteruje po wszystkich obiektywach -->
+        {{ range .Resources.Match "images/*" }}  <!-- Zbiera wszystkie zdjęcia z images/ -->
+          {{ $thumb := .Resize "300x webp" }}
+          <a href="{{ $.Permalink }}" class="photo-card">  <!-- Link do strony detalu obiektywu -->
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .Name }}" class="photo-image pulse">
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

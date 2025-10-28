@@ -1,0 +1,69 @@
+body { background-color: #000; color: #fff; }  /* Ciemny vampirowy bg */
+
+.neon-red {
+  color: #f00;
+  text-shadow: 0 0 5px #f00, 0 0 10px #f00;  /* Neonowy glow */
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.pulse:hover {
+  transform: scale(1.05);  /* Powiększanie na hover */
+  box-shadow: 0 0 15px #f00;  /* Mocniejszy czerwony glow na hover */
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #f00; }
+  50% { box-shadow: 0 0 15px #f00; }
+  100% { box-shadow: 0 0 5px #f00; }
+}
+
+.obiektywy-grid, .photos-grid, .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.obiektywy-card, .photo-card {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #111;  /* Ciemniejszy szary */
+  box-shadow: 0 0 10px #000;  /* Cień dla głębi */
+}
+
+.photo-image, .gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag-button {
+  background-color: #300;  /* Ciemnoczerwone bg */
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  text-transform: lowercase;
+  box-shadow: 0 0 5px #f00;  /* Neonowy czerwony */
+}
+
+.placeholder {
+  background-color: #222;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  border-radius: 8px;
+}

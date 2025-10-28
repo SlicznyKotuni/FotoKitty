@@ -1,0 +1,19 @@
+baseURL = 'site'
+languageCode = 'en-us'
+title = 'FotoKitty'
+theme = 'ananke'
+ 
+ [params]
+  description = 'Foto site for Kotuni'
+  background_color_class = 'bg-black'  # Ciemniejsze tło
+  custom_css = ['/css/custom.css']  # Ładuje ulepszony CSS
+
+[menu]
+  [[menu.main]]
+    name = 'Obiektywy'
+    url = '/obiektywy/'
+    weight = 1
+  [[menu.main]]
+    name = 'Galeria Główna'
+    url = '/'
+    weight = 2
